@@ -1,0 +1,80 @@
+<!-- add-user.component.html -->
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <!-- First Name -->
+    <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control"
+            placeholder="Enter First Name">
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Enter Last Name">
+    </div>
+
+    <!-- Age -->
+    <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" formControlName="age" class="form-control" placeholder="Enter Age">
+    </div>
+
+    <!-- Profile Image Upload -->
+    <div class="form-group">
+        <label for="profile">Profile Picture:</label>
+        <input type="file" id="profile" formControlName="profile" class="form-control-file">
+    </div>
+
+    <!-- Experience Documents -->
+    <div class="form-group">
+        <label for="experienceDocuments">Experience Document </label>
+        <input type="file" id="experience" formControlName="experienceDocuments" class="form-control-file">
+    </div>
+
+    <!-- Educational Details -->
+        <div class="form-group">
+            <label for="educationInstitute">Education Institute:</label>
+            <input type="text" id="educationInstitute" formControlName="educationInstitute" class="form-control" placeholder="Enter Institute Name">
+        </div>
+        <div class="form-group">
+            <label for="qualification">Qualification:</label>
+            <input type="text" id="qualification" formControlName="qualification" class="form-control" placeholder="Enter Qualification">
+        </div>
+    
+    
+
+    <!-- Address -->
+    <div formGroupName="address" class="address-group">
+        <div class="form-group">
+            <label for="addressLine1">Address Line 1:</label>
+            <input type="text" id="addressLine1" formControlName="addressLine1" class="form-control"
+                placeholder="Enter Address Line 1">
+        </div>
+        <div class="form-group">
+            <label for="addressLine2">Address Line 2:</label>
+            <input type="text" id="addressLine2" formControlName="addressLine2" class="form-control"
+                placeholder="Enter Address Line 2">
+        </div>
+        <div class="form-group">
+            <label for="state">State:</label>
+            <select id="state" formControlName="state" class="form-control" (change)="onChangeState($event)">
+                <option value="">Select State</option>
+                <option *ngFor="let state of states" [value]="state.stateId">{{state.stateName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="city">City:</label>
+            <select id="city" formControlName="city" class="form-control" multiple>
+                <option *ngFor="let city of cities">{{city.cityName}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" id="country" formControlName="country" class="form-control" value="India" readonly>
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
